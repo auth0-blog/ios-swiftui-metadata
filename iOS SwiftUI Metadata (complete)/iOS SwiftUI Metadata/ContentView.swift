@@ -177,8 +177,7 @@ extension ContentView {
     Auth0
       .webAuth()
       .audience("https://\(domain)/api/v2/")
-//      .scope("openid profile email read:current_user update:current_user_metadata")
-      .scope("openid profile email read:current_user")
+      .scope("openid profile email read:current_user update:current_user_metadata")
       .start { result in
         
         switch result {
