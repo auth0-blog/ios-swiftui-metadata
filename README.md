@@ -71,11 +71,11 @@ The complete project is the result of downloading the start project and followin
 
 To use the complete project, download it, then connect it to Auth0 by doing the following:
 
-* Log into the [Auth0 dashboard](https://manage.auth0.com/dashboard/), select **Applications → Applications** from the left side menu, then click the **Create Application** button.
-* Enter a name for the app in the **Name** field and choose the **Native** application type.
-* Select the **Settings** tab and copy the **Domain** and **Client ID** values.
-* Open `Auth0.plist` in the app project. Paste the **Domain** value that you just copied into the **Value** field of the property list’s `Domain` row.
-* Past the **Client ID** value that you just copied into the **Value** field of the property list’s `ClientId` row.
+* Log into the [Auth0 dashboard](https://manage.auth0.com/dashboard/), select _Applications_ → _Applications_ from the left side menu, then click the _Create Application_ button.
+* Enter a name for the app in the _Name_ field and choose the _Native_ application type.
+* Select the _Settings_ tab and copy the _Domain_ and _Client ID_ values.
+* Open `Auth0.plist` in the app project. Paste the _Domain_ value that you just copied into the _Value_ field of the property list’s `Domain` row.
+* Paste the _Client ID_ value that you just copied into the _Value_ field of the property list’s `ClientId` row.
 * Copy the project’s Bundle Identifier from Xcode.
 * Using the string below, replace `{BUNDLE_IDENTIFIER}` with the app’s bundle identifier and `{YOUR_DOMAIN}` with your tenant’s domain:
 
@@ -83,7 +83,32 @@ To use the complete project, download it, then connect it to Auth0 by doing the 
 {BUNDLE_IDENTIFIER}://{YOUR_DOMAIN}/ios/{BUNDLE_IDENTIFIER}/callback
 ```
 
-* Run the app!
+You will also need to create a new user with user and app metadata. Follow these steps:
+
+* * Log into the [Auth0 dashboard](https://manage.auth0.com/dashboard/), select _User Management_ → _Users_ from the left side menu, then click the _Create User_ button.
+* Enter an email address for the user in the _Email_ field, enter a password for the user in both the _Password_ and _Repeat Password_ fields, leave _Connection_ set to _Username-Password-Authentication_ and click the _Create_ button. This will create a new user and take you to that user’s _Details_ page.
+* Scroll down the _Details_ page to the _Metadata_ section.
+* Enter the following into the _user\_metadata_ text area:
+
+```json
+{
+  "personal_affirmation": "Believe in yourself!"
+}
+```
+
+* Enter the following into the _app\_metadata_ text area:
+
+```json
+{
+  "display_announcement": true,
+  "announcement_text": "Tap here for an important announcement",
+  "announcement_url": "https://www.youtube.com/watch?v=DLzxrzFCyOs"
+}
+```
+
+* Click the _Save_ button.
+
+* **Run the app!**
 
 
 ## License
