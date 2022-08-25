@@ -224,10 +224,15 @@ extension ContentView {
           
             // Get app metadata
             let appMetadata = metadata["app_metadata"] as? [String: Any]
-            self.shouldDisplayAnnouncement = appMetadata?["display_announcement"] as? Bool ?? false
-            self.announcement = appMetadata?["announcement_text"] as? String ?? "ANNOUNCEMENT - TAP HERE"
-            let announcementUrlString = appMetadata?["announcement_url"] as? String ?? "about:blank"
+          
+            let announcementFlag = appMetadata?["display_announcement"] as? Bool ?? false
+            self.announcement = appMetadata?["announcement_text"] as? String ?? ""
+            let announcementUrlString = appMetadata?["announcement_url"] as? String ?? ""
             self.announcementUrl = URL(string: announcementUrlString)
+          
+            self.shouldDisplayAnnouncement = announcementFlag &&
+                                             announcement != "" &&
+                                             announcementUrlString != ""
             
         } // switch
         
